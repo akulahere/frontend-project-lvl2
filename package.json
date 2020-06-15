@@ -25,6 +25,8 @@
     "eslint-plugin-jest": "^23.13.0"
   },
   "dependencies": {
-    "commander": "^5.1.0"
+    "JSON": "^1.0.0",
+    "commander": "^5.1.0",
+    "lodash": "^4.17.15"
   }
 }
