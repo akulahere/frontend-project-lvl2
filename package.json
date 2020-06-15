@@ -2,15 +2,22 @@
   "name": "frontend-project-lvl2",
   "version": "1.0.0",
   "description": "comparator",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akulahere/frontend-project-lvl2.git"
+  },
+  "author": "Dmitry Akulinin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akulahere/frontend-project-lvl2/issues"
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "author": "Dmitry Akulinin",
-  "license": "ISC",
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
