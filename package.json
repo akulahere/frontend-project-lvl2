@@ -4,7 +4,7 @@
   "description": "comparator",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "npx -n --experimental-vm-modules jest"
   },
   "repository": {
     "type": "git",
@@ -23,21 +23,19 @@
     "gendiff": "bin/cli.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "babel-jest": "^26.0.1",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jest": "^23.13.0",
-    "jest": "^26.0.1"
+    "@babel/plugin-syntax-import-meta": "^7.8.3",
+    "babel-eslint": "10.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jest": "23.8.2",
+    "jest": "^25.5.3",
+    "jest-cli": "^25.5.3"
   },
   "dependencies": {
-    "@jest/globals": "^26.0.1",
     "JSON": "^1.0.0",
     "commander": "^5.1.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "@jest/globals": "^25.5.2"
   }
 }
