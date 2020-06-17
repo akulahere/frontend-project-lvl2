@@ -3,7 +3,6 @@ import parse from './parsers.js';
 
 const parseDiff = (obj1, obj2) => {
   const mergedObject = { ...obj1, ...obj2 };
-  console.log(mergedObject);
   const result = Object.keys(mergedObject).map((key) => {
     if (!_.has(obj1, key)) {
       return ` + ${key}: ${obj2[key]}`;
