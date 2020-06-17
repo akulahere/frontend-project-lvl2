@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "JSON": "^1.0.0",
+    "js-yaml": "^3.14.0",
     "commander": "^5.1.0",
     "lodash": "^4.17.15",
     "@jest/globals": "^25.5.2"

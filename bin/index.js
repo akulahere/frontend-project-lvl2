@@ -1,14 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import JSON from 'JSON';
 import _ from 'lodash';
-
-const currentPath = process.cwd();
-
-export const getAbsolutePath = (pathToFile) => path.resolve(currentPath, pathToFile);
+import parse from './parsers.js';
 
 const parseDiff = (obj1, obj2) => {
   const mergedObject = { ...obj1, ...obj2 };
+  console.log(mergedObject);
   const result = Object.keys(mergedObject).map((key) => {
     if (!_.has(obj1, key)) {
       return ` + ${key}: ${obj2[key]}`;
@@ -24,8 +19,8 @@ const parseDiff = (obj1, obj2) => {
   return `{\n${result}\n}`;
 };
 
-export const genDiff = (firstFilePath, secondFilePath) => {
-  const first = JSON.parse(fs.readFileSync(getAbsolutePath(firstFilePath), 'utf-8'));
-  const second = JSON.parse(fs.readFileSync(getAbsolutePath(secondFilePath), 'utf-8'));
+export default (firstFilePath, secondFilePath) => {
+  const first = parse(firstFilePath);
+  const second = parse(secondFilePath);
   return parseDiff(first, second);
 };
