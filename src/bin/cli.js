@@ -3,10 +3,10 @@ import cli from 'commander';
 import genDiff from '../index.js';
 
 cli
-  .version('0.1.0')
+  .version('0.2.0')
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'output format')
   .arguments('<filepath1> <filepath2>')
-  .action((filepath1, filepath2) => console.log(genDiff(filepath1, filepath2)));
+  .option('-f, --format [type]', 'output format: [stylish]', 'stylish')
+  .action((filepath1, filepath2) => (console.log(genDiff(filepath1, filepath2, cli.format))));
 
 cli.parse(process.argv);
