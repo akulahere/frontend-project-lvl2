@@ -20,7 +20,7 @@
     "transform": {}
   },
   "bin": {
-    "gendiff": "bin/cli.js"
+    "gendiff": "src/bin/cli.js"
   },
   "devDependencies": {
     "@babel/plugin-syntax-import-meta": "^7.8.3",
