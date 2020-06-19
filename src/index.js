@@ -1,5 +1,5 @@
 import genDiff from './diffBuilder.js';
-import render from './formaters/selectFormat.js';
+import render from './formaters/index.js';
 import parse from './parsers.js';
 
 export default (firstFilePath, secondFilePath, formatOfRender) => {
