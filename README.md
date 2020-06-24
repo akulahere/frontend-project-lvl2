@@ -5,3 +5,9 @@
 $ gendiff [options] filepath1 filepath2
 ```  
 [![asciicast](https://asciinema.org/a/fE0tejdiXa2htQodBWpP7DYtd.svg)](https://asciinema.org/a/fE0tejdiXa2htQodBWpP7DYtd)
+
+[![asciicast](https://asciinema.org/a/VCGfMstw97qk18V3hUr9Mq0Ob.svg)](https://asciinema.org/a/VCGfMstw97qk18V3hUr9Mq0Ob)
+
+[![asciicast](https://asciinema.org/a/n9xMuZCS9YdmPj9oYXh0wfSXG.svg)](https://asciinema.org/a/n9xMuZCS9YdmPj9oYXh0wfSXG)
+
+[![asciicast](https://asciinema.org/a/mER9x6tyS1WRdxfFTAXD03ldX.svg)](https://asciinema.org/a/mER9x6tyS1WRdxfFTAXD03ldX)
