@@ -10,11 +10,11 @@ const makePlain = (diff, path) => {
     const fullPath = path ? `${path}.${name}` : `${name}`;
     switch (status) {
       case 'added':
-        return `Property '${fullPath}' was added with value: ${stringify(newValue)}`;
+        return `Property '${fullPath}' was added with value: '${stringify(newValue)}'`;
       case 'removed':
-        return `Property '${fullPath}' was deleted`;
+        return `Property '${fullPath}' was removed`;
       case 'modified':
-        return `Property '${fullPath}' was changed from '${stringify(oldValue)}' to '${stringify(newValue)}'`;
+        return `Property '${fullPath}' was updated. From '${stringify(oldValue)}' to '${stringify(newValue)}'`;
       case 'hasChildren':
         return `${makePlain(children, fullPath)}`;
       case 'unmodified':
