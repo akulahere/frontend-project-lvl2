@@ -15,7 +15,7 @@ const makePlain = (diff, path) => {
         return `Property '${fullPath}' was removed`;
       case 'modified':
         return `Property '${fullPath}' was updated. From '${stringify(oldValue)}' to '${stringify(newValue)}'`;
-      case 'hasChildren':
+      case 'nested':
         return `${makePlain(children, fullPath)}`;
       case 'unmodified':
         return null;

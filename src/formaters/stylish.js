@@ -29,7 +29,7 @@ const makeStylish = (diff, depth = 0) => {
         return `${blank}    ${name}: ${formatValue(oldValue, depth)}`;
       case 'modified':
         return `${blank}  + ${name}: ${formatValue(newValue, depth)}\n${blank}  - ${name}: ${formatValue(oldValue, depth)}`;
-      case 'hasChildren':
+      case 'nested':
         return `${blank}    ${name}: ${makeStylish(children, depth + 1)}`;
       default:
         throw new Error(`${status} is incorrect status of the key: ${name}`);

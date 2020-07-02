@@ -3,7 +3,7 @@ import makeStylish from './stylish.js';
 import makeJson from './json.js';
 
 const render = (diff, renderFormat) => {
-  switch (String(renderFormat)) {
+  switch (renderFormat) {
     case 'stylish':
       return makeStylish(diff);
     case 'plain':
