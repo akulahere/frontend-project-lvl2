@@ -4,16 +4,20 @@ import genDiff from '../src';
 
 const inputFormats = ['json', 'ini', 'yml'];
 const outputFormats = ['json', 'stylish', 'plain'];
+let getExpectedResult;
 
 const getFixturePath = (filename) => path.join('__tests__', '__fixtures__', filename);
 
-const getExpectedResult = (format) => fs.readFileSync(getFixturePath(`${format}ExpectedResult`), 'utf-8');
+beforeAll(() => {
+  getExpectedResult = (format) => fs.readFileSync(getFixturePath(`${format}ExpectedResult`), 'utf-8');
+  return getExpectedResult;
+});
 
 describe.each(outputFormats)('%s', (outputFormat) => {
   test.each(inputFormats)('%s', (inputFormat) => {
-    const before = getFixturePath(`before.${inputFormat}`);
-    const after = getFixturePath(`after.${inputFormat}`);
-    const actual = genDiff(before, after, outputFormat);
+    const file1 = getFixturePath(`before.${inputFormat}`);
+    const file2 = getFixturePath(`after.${inputFormat}`);
+    const actual = genDiff(file1, file2, outputFormat);
     expect(actual).toEqual(getExpectedResult(outputFormat));
   });
 });
