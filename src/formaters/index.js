@@ -2,17 +2,12 @@ import makePlain from './plain.js';
 import makeStylish from './stylish.js';
 import makeJson from './json.js';
 
-const render = (diff, renderFormat) => {
-  switch (renderFormat) {
-    case 'stylish':
-      return makeStylish(diff);
-    case 'plain':
-      return makePlain(diff);
-    case 'json':
-      return makeJson(diff);
-    default:
-      throw new Error(`'${renderFormat}' is unsupported`);
-  }
+const format = {
+  stylish: (diff) => makeStylish(diff),
+  plain: (diff) => makePlain(diff),
+  json: (diff) => makeJson(diff),
 };
+
+const render = (diff, renderFormat) => format[renderFormat](diff);
 
 export default render;

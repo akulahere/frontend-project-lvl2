@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 const genDiff = (first, second) => {
-  const mergedObject = _.union(Object.keys(first), Object.keys(second));
-  const diff = mergedObject.map((key) => {
+  const keys = _.union(_.keys(first), _.keys(second));
+  const diff = keys.map((key) => {
     const node = {
       name: key,
       oldValue: first[key],
@@ -21,12 +21,10 @@ const genDiff = (first, second) => {
         children: genDiff(first[key], second[key]),
       };
     }
-    if (
-      second[key] !== first[key]
-    ) {
+    if (second[key] !== first[key]) {
       return { ...node, status: 'modified' };
     }
-    return { ...node, status: 'unmodified' };
+    return { name: key, oldValue: first[key], status: 'unmodified' };
   });
   return diff;
 };

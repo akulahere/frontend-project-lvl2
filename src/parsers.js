@@ -1,18 +1,12 @@
 import yaml from 'js-yaml';
 import ini from 'ini';
 
-const parser = (fileContent, format) => {
-  let result;
-  if (format === '.json') {
-    result = JSON.parse(fileContent);
-  }
-  if (format === '.yml') {
-    result = yaml.safeLoad(fileContent);
-  }
-  if (format === '.ini') {
-    result = ini.parse(fileContent);
-  }
-  return result;
+const parseFunctions = {
+  json: (content) => JSON.parse(content),
+  yml: (content) => yaml.safeLoad(content),
+  ini: (content) => ini.parse(content),
 };
 
-export default parser;
+const parse = (fileContent, format) => parseFunctions[format](fileContent);
+
+export default parse;
