@@ -18,7 +18,7 @@ const formatValue = (value, depth) => {
 const makeStylish = (diff, depth = 0) => {
   const blank = makeSpaces(depth);
   const result = diff.map(({
-    name, status, oldValue, newValue, children,
+    name, status, oldValue, value, newValue, children,
   }) => {
     switch (status) {
       case 'added':
@@ -26,7 +26,7 @@ const makeStylish = (diff, depth = 0) => {
       case 'removed':
         return `${blank}  - ${name}: ${formatValue(oldValue, depth)}`;
       case 'unmodified':
-        return `${blank}    ${name}: ${formatValue(oldValue, depth)}`;
+        return `${blank}    ${name}: ${formatValue(value, depth)}`;
       case 'modified':
         return `${blank}  + ${name}: ${formatValue(newValue, depth)}\n${blank}  - ${name}: ${formatValue(oldValue, depth)}`;
       case 'nested':

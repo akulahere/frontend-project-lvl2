@@ -3,11 +3,6 @@ import _ from 'lodash';
 const genDiff = (first, second) => {
   const keys = _.union(_.keys(first), _.keys(second));
   const diff = keys.map((key) => {
-    const node = {
-      name: key,
-      oldValue: first[key],
-      newValue: second[key],
-    };
     if (!_.has(second, key)) {
       return { name: key, oldValue: first[key], status: 'removed' };
     }
@@ -22,9 +17,11 @@ const genDiff = (first, second) => {
       };
     }
     if (second[key] !== first[key]) {
-      return { ...node, status: 'modified' };
+      return {
+        name: key, oldValue: first[key], newValue: second[key], status: 'modified',
+      };
     }
-    return { name: key, oldValue: first[key], status: 'unmodified' };
+    return { name: key, value: first[key], status: 'unmodified' };
   });
   return diff;
 };

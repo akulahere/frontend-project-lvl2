@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import cli from 'commander';
-import genDiff from '../index.js';
+import genDiff from '../src/index.js';
 
 cli
   .version('0.2.0')

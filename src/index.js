@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import genDiff from './diffBuilder.js';
-import render from './formaters/index.js';
+import render from './formatters/index.js';
 import parse from './parsers.js';
 
 const getFileFormat = (filePath) => path.extname(filePath).substr(1);

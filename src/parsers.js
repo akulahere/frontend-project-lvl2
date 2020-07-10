@@ -1,12 +1,17 @@
 import yaml from 'js-yaml';
 import ini from 'ini';
 
-const parseFunctions = {
-  json: (content) => JSON.parse(content),
-  yml: (content) => yaml.safeLoad(content),
-  ini: (content) => ini.parse(content),
+const parsers = {
+  json: JSON.parse,
+  yml: yaml.safeLoad,
+  ini: ini.parse,
 };
 
-const parse = (fileContent, format) => parseFunctions[format](fileContent);
+const parse = (content, format) => {
+  if (format in parsers) {
+    return parsers[format](content);
+  }
+  throw new Error('Unknown parser');
+};
 
 export default parse;
