@@ -16,8 +16,8 @@ beforeEach(() => {
   };
 });
 
-describe.each(outputFormats)('%s', (outputFormat) => {
-  test.each(inputFormats)('%s', (inputFormat) => {
+describe.each(outputFormats)('genDiff for %s', (outputFormat) => {
+  test.each(inputFormats)('input format: %s', (inputFormat) => {
     const file1 = getFixturePath(`file1.${inputFormat}`);
     const file2 = getFixturePath(`file2.${inputFormat}`);
     const actual = genDiff(file1, file2, outputFormat);

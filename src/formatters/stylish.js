@@ -5,7 +5,7 @@ const makeIndent = (depth) => baseIndent.repeat(depth);
 
 const formatValue = (value, depth) => {
   if (typeof value === 'string') {
-    return `'${value}'`;
+    return value;
   }
   const indent = makeIndent(depth + 1);
   const result = Object.entries(value)
