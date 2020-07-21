@@ -16,11 +16,11 @@ const formatValue = (value, depth) => {
   return `{\n${result.join('\n')}\n${indent}}`;
 };
 
-const makeStylish = (diff) => {
-  const render = (tree, depth) => tree.flatMap(({
+const makeStylish = (diff, depth = 0) => {
+  const indent = makeIndent(depth);
+  const result = diff.map(({
     name, status, oldValue, value, newValue, children,
   }) => {
-    const indent = makeIndent(depth);
     switch (status) {
       case 'added':
         return `${indent}  + ${name}: ${formatValue(newValue, depth)}`;
@@ -29,14 +29,14 @@ const makeStylish = (diff) => {
       case 'unmodified':
         return `${indent}    ${name}: ${formatValue(value, depth)}`;
       case 'modified':
-        return [`${indent}  + ${name}: ${formatValue(newValue, depth)}`, `${indent}  - ${name}: ${formatValue(oldValue, depth)}`];
+        return `${indent}  + ${name}: ${formatValue(newValue, depth)}\n${indent}  - ${name}: ${formatValue(oldValue, depth)}`;
       case 'nested':
-        return `${indent}    ${name}: ${render(children, depth + 1)}`;
+        return `${indent}    ${name}: ${makeStylish(children, depth + 1)}`;
       default:
         throw new Error(`${status} is incorrect status of the key: ${name}`);
     }
   });
-  return `{\n${render(diff, 0).join('\n')}\n${makeIndent(0)}}`;
+  return `{\n${result.join('\n')}\n${indent}}`;
 };
 
 export default makeStylish;
