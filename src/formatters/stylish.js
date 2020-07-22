@@ -6,15 +6,11 @@ const makeIndent = (depth) => baseIndent.repeat(depth);
 const formatValue = (value, depth) => {
   if (_.isObject(value)) {
     const indent = makeIndent(depth + 1);
-    const result = Object.entries(value)
-      .map(([key, keyValue]) => {
-        const calcValue = _.isObject(keyValue) ? formatValue(keyValue, depth + 1) : keyValue;
-        return `${indent}    ${key}: ${calcValue}`;
-      });
+    const result = _.map(_.entries(value), ([key, keyValue]) => {
+      const calcValue = _.isObject(keyValue) ? formatValue(keyValue, depth + 1) : keyValue;
+      return `${indent}    ${key}: ${calcValue}`;
+    });
     return `{\n${result.join('\n')}\n${indent}}`;
-  }
-  if (typeof value === 'string') {
-    return `${value}`;
   }
   return value;
 };
