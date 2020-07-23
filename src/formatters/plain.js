@@ -10,9 +10,10 @@ const stringify = (value) => {
   return value;
 };
 
+const makePath = (oldPath, newPath) => [...oldPath, newPath].join('.');
+
 const makePlain = (diff) => {
   const render = (tree, paths = []) => tree.flatMap((node) => {
-    const makePath = (oldPath, newPath) => [...oldPath, newPath].join('.');
     const fullPath = makePath(paths, node.name);
     switch (node.status) {
       case 'added':

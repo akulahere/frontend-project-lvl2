@@ -14,8 +14,7 @@ const parseIni = (content) => {
     }
     return value;
   });
-  const result = convertNumbers(parseContent);
-  return result;
+  return convertNumbers(parseContent);
 };
 
 const parsers = {
