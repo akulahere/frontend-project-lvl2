@@ -11,8 +11,9 @@ const stringify = (value) => {
 };
 
 const makePlain = (diff) => {
-  const render = (tree, path = []) => tree.flatMap((node) => {
-    const fullPath = [...path, node.name].join('.');
+  const render = (tree, paths = []) => tree.flatMap((node) => {
+    const makePath = (oldPath, newPath) => [...oldPath, newPath].join('.');
+    const fullPath = makePath(paths, node.name);
     switch (node.status) {
       case 'added':
         return `Property '${fullPath}' was added with value: ${stringify(node.newValue)}`;
@@ -21,7 +22,7 @@ const makePlain = (diff) => {
       case 'modified':
         return `Property '${fullPath}' was updated. From ${stringify(node.oldValue)} to ${stringify(node.newValue)}`;
       case 'nested':
-        return render(node.children, [...path, node.name]);
+        return render(node.children, [...paths, node.name]);
       case 'unmodified':
         return [];
       default:

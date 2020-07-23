@@ -3,13 +3,14 @@ import _ from 'lodash';
 const baseIndent = '    ';
 const makeIndent = (depth) => baseIndent.repeat(depth);
 
-const formatValue = (value, depth) => {
-  if (_.isObject(value)) {
-    const indent = makeIndent(depth + 1);
-    const result = _.map(_.entries(value), ([key, keyValue]) => `${indent}    ${key}: ${keyValue}`);
-    return `{\n${result.join('\n')}\n${indent}}`;
+const formatValue = (data, depth) => {
+  if (!_.isObject(data)) {
+    return data;
   }
-  return value;
+  const indent = makeIndent(depth + 1);
+  const result = Object.entries(data)
+    .map(([key, value]) => `${indent}    ${key}: ${formatValue(value, depth + 1)}`);
+  return `{\n${result.join('\n')}\n${indent}}`;
 };
 
 const makeStylish = (diff, depth = 0) => {
